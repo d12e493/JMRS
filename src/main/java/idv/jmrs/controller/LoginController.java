@@ -1,4 +1,4 @@
-package idv.mrbs.controller;
+package idv.jmrs.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

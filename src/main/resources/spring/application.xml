@@ -10,8 +10,7 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
-	<context:component-scan base-package="idv.mrbs"
-		scoped-proxy="targetClass" />
+	<context:component-scan base-package="idv.jmrs" />
 
 	<import resource="classpath*:application-*.xml" />
 
@@ -22,7 +21,7 @@
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/tiles/layout.xml</value>
+				<value>classpath:/tiles/layout.xml</value>
 			</list>
 		</property>
 	</bean>

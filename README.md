@@ -8,7 +8,7 @@ Meeting Room Booking System for java base.
 1. different privilege.
 
 ## Deployment
-You have to prepare below:
+You have to prepare below: </br>
 1. Java 1.8
-1. Tomcat 8
+1. Tomcat 8.0.38 (above)
 1. MySQL 5.6 above

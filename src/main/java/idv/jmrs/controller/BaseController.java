@@ -1,4 +1,4 @@
-package idv.mrbs.controller;
+package idv.jmrs.controller;
 
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
