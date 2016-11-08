@@ -7,8 +7,10 @@
 	<definition name="defaultTemplate"
 		template="/WEB-INF/pages/template/defaultTemplate.jsp">
 		<put-attribute name="title" value="Dashboard" />
+		<put-attribute name="css" value="/WEB-INF/pages/template/css.jsp" />
+		<put-attribute name="script" value="/WEB-INF/pages/template/script.jsp" />
 		<put-attribute name="header" value="/WEB-INF/pages/template/header.jsp" />
-		<put-attribute name="menu" value="/WEB-INF/pages/template/menu.jsp" />
+		<put-attribute name="sideBar" value="/WEB-INF/pages/template/sideBar.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/pages/template/footer.jsp" />
 	</definition>
