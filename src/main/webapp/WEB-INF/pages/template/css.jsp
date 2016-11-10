@@ -6,8 +6,12 @@
 <!-- Ionicons -->
 <link rel="stylesheet" href="ionicons-2.0.1/css/ionicons.min.css">
 
-<link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+
+
 
 <!-- Theme style -->
 <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css">
+
+<link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+

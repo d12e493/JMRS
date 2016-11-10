@@ -13,3 +13,4 @@
 <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"></script>

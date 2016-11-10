@@ -12,15 +12,12 @@
 <tiles:insertAttribute name="script" />
 <title><tiles:insertAttribute name="title" /></title>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="sideBar" />
 		<tiles:insertAttribute name="body" />
 		<tiles:insertAttribute name="footer" />
 	</div>
-
-
-	
 </body>
 </html>
