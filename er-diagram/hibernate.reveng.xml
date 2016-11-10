@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="jmrs" match-name="book"/>
+  <table-filter match-catalog="jmrs" match-name="country"/>
+  <table-filter match-catalog="jmrs" match-name="region"/>
+  <table-filter match-catalog="jmrs" match-name="role_"/>
+  <table-filter match-catalog="jmrs" match-name="room"/>
+  <table-filter match-catalog="jmrs" match-name="user_"/>
+</hibernate-reverse-engineering>
