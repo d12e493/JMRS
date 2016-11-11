@@ -3,16 +3,6 @@
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
-		<!-- Sidebar user panel -->
-		<div class="user-panel">
-			<div class="pull-left image">
-				<img src="dist/img/user2-160x160.jpg" class="img-circle"
-					alt="User Image">
-			</div>
-			<div class="pull-left info">
-				<p>Alexander Pierce</p>
-			</div>
-		</div>
 		<div id="datepicker"></div>
 		<script>
 			$(function() {
@@ -20,8 +10,24 @@
 			});
 		</script>
 		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<div class="box box-primary box-solid">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-fw fa-list-alt"></i> &nbsp; My Booking Room</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              The body of the box
+            </div>
+            <!-- /.box-body -->
+          </div>
 		<ul class="sidebar-menu">
-			<li class="header">MAIN NAVIGATION</li>
+			<li class="header">MY RESERVATIONS</li>
 			<li class="active treeview"><a href="#"> <i
 					class="fa fa-dashboard"></i> <span>Dashboard</span> <span
 					class="pull-right-container"> <i

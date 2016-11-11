@@ -27,7 +27,7 @@ public class Book implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer bookId;
 	private Room room;
 	private User user;
