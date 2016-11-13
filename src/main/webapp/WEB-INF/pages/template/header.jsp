@@ -1,23 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <header class="main-header">
 	<!-- Logo -->
-	<a href="index2.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+	<a href="<c:url value="/"/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
 		<span class="logo-mini"><b>Java</b>MRS</span> <!-- logo for regular state and mobile devices -->
 		<span class="logo-lg"><b>Java</b>MRS</span>
 	</a>
 	<!-- Header Navbar: style can be found in header.less -->
 	<nav class="navbar navbar-static-top">
-		<!-- Sidebar toggle button-->
-		<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
-			role="button"> <span class="sr-only">Toggle navigation</span>
-		</a>
-		<ul class="nav navbar-nav">
-			<li><a href="#"><i class="fa fa-fw fa-calendar-check-o"></i>會議室管理</a></li>
-			<li><a href="#"><i class="fa fa-fw fa-users"></i>使用者管理</a></li>
-			<li><a href="#"><i class="fa fa-fw fa-gears"></i>系統設定</a></li>
-			<li><a href="#"><i class="fa fa-fw fa-question-circle"></i>Help</a></li>
+		<ul class="nav navbar-nav" id="nav">
+			<li><a href="<c:url value="/room/list"/>"><i
+					class="fa fa-fw fa-calendar-check-o"></i>會議室管理</a></li>
+			<li><a href="<c:url value="/user/list"/>"><i
+					class="fa fa-fw fa-users"></i>使用者管理</a></li>
+			<li><a href="<c:url value="/system/list"/>"><i
+					class="fa fa-fw fa-gears"></i>系統設定</a></li>
+			<li><a href="<c:url value="/help"/>"><i
+					class="fa fa-fw fa-question-circle"></i>Help</a></li>
 		</ul>
+		<script>
+			$('#nav li a').each(function() {
+				var path = window.location.pathname;
+
+				if ($(this).attr('href') == path) {
+					$(this).closest('li').addClass('active');
+					return false;
+				}
+			});
+		</script>
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
 				<!-- Notifications: style can be found in dropdown.less -->
@@ -56,8 +67,8 @@
 						class="hidden-xs">Login User Name</span> </a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
-						<li class="user-header"><img src="dist/img/user2-160x160.jpg"
-							class="img-circle" alt="User Image">
+						<li class="user-header"><img src="" class="img-circle"
+							alt="User Image">
 
 							<p>
 								Alexander Pierce - Web Developer <small>Member since

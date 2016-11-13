@@ -1,8 +1,13 @@
 package idv.jmrs.service.impl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,4 +51,13 @@ public abstract class BaseServiceImpl implements BaseService {
 		return entityManager.find(clazz, id);
 	}
 
+	@Override
+	public <T> List<T> findAll(Class<T> clazz) {
+		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaQuery<T> cq = cb.createQuery(clazz);
+		Root<T> rootEntry = cq.from(clazz);
+		CriteriaQuery<T> all = cq.select(rootEntry);
+		TypedQuery<T> allQuery = entityManager.createQuery(all);
+		return allQuery.getResultList();
+	}
 }
