@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <header class="main-header">
 	<!-- Logo -->
 	<a href="<c:url value="/"/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -11,13 +12,13 @@
 	<nav class="navbar navbar-static-top">
 		<ul class="nav navbar-nav" id="nav">
 			<li><a href="<c:url value="/room/list"/>"><i
-					class="fa fa-fw fa-calendar-check-o"></i>會議室管理</a></li>
+					class="fa fa-fw fa-calendar-check-o"></i><spring:message code="nav.room.manage"/></a></li>
 			<li><a href="<c:url value="/user/list"/>"><i
-					class="fa fa-fw fa-users"></i>使用者管理</a></li>
+					class="fa fa-fw fa-users"></i><spring:message code="nav.user.manage"/></a></li>
 			<li><a href="<c:url value="/system/list"/>"><i
-					class="fa fa-fw fa-gears"></i>系統設定</a></li>
+					class="fa fa-fw fa-gears"></i><spring:message code="nav.system.setting"/></a></li>
 			<li><a href="<c:url value="/help"/>"><i
-					class="fa fa-fw fa-question-circle"></i>Help</a></li>
+					class="fa fa-fw fa-question-circle"></i><spring:message code="nav.help"/></a></li>
 		</ul>
 		<script>
 			$('#nav li a').each(function() {

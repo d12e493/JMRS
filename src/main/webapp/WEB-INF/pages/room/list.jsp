@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <link rel="stylesheet"
 	href="<c:url value="/plugins/datatables/dataTables.bootstrap.css"/>">
 <script src="<c:url value="/js/room/list.js"/>"></script>
@@ -13,11 +14,11 @@
 		<div class="col-md-12">
 			<div class="box box-solid">
 				<div class="box-header with-border">
-					<h3 class="box-title">Room List</h3>
+					<h3 class="box-title"><spring:message code="path.room.list"/></h3>
 				</div>
 				<div class="box-body">
 					<div class="btn-group">
-						<a href="<c:url value="/room/add"/>" class="btn btn-success">Add</a>
+						<a href="<c:url value="/room/add"/>" class="btn btn-success"><spring:message code="button.add"/></a>
 					</div>
 					<table id="room_table"
 						class="table table-bordered table-striped dataTable" role="grid"
