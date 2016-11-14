@@ -41,6 +41,12 @@ public class RoomController extends BaseController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public ModelAndView add() {
+		ModelAndView modelAndView = new ModelAndView("room-addEdit");
+		return modelAndView;
+	}
+
 	@RequestMapping("/test")
 	public String test() {
 		return "test";
