@@ -5,11 +5,20 @@
 <script src="<c:url value="/js/room/addEdit.js"/>"></script>
 <section class="content">
 	<div class="box box-success">
-		<div class="box-header with-order">
+		<div class="box-header with-border">
 			<h3 class="box-title">新增 會議室</h3>
 		</div>
 		<div class="box-body">
-			<form class="form-horizontal">
+			<c:choose>
+				<c:when test="${action == 'add'}">
+					<c:url var="form_action" value="/room/save" />
+				</c:when>
+				<c:when test="${action == 'edit'}">
+					<c:url var="form_action" value="/room/update" />
+				</c:when>
+			</c:choose>
+			<form class="form-horizontal" id="room_form" method="post"
+				action="${form_action}">
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">Name</label>
 					<div class="col-md-3">
@@ -38,15 +47,16 @@
 		</div>
 		<!-- /.box-body -->
 		<div class="box-footer">
-			<button type="submit" class="btn btn-info">
-				<spring:message code="button.add" />
-			</button>
-			&nbsp;
-			<button type="submit" class="btn btn-danger">
-				<spring:message code="button.cancel" />
-			</button>
+			<div class="col-md-offset-2">
+				<a href="#" class="btn btn-primary"> <i class="fa fa-fw fa-save"></i>
+					<spring:message code="button.add" />
+				</a>
+				&nbsp;
+				<a href="#" class="btn btn-danger"> <i class="fa fa-fw fa-ban"></i>
+					<spring:message code="button.cancel" />
+				</a>
+			</div>
 		</div>
 		<!-- /.box-footer -->
-
 	</div>
 </section>

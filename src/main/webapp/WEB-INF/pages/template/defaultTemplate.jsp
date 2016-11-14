@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -15,9 +16,9 @@
 <body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<tiles:insertAttribute name="header" />
-		
+
 		<tiles:insertAttribute name="sideBar" />
-		
+
 		<div class="content-wrapper">
 			<tiles:insertAttribute name="body" />
 		</div>
