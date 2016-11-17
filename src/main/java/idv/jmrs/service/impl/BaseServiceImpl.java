@@ -4,20 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
 import idv.jmrs.service.BaseService;
 
-@Transactional
-public abstract class BaseServiceImpl implements BaseService {
+public class BaseServiceImpl implements BaseService {
 
-	@Autowired
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Override

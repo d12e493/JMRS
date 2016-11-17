@@ -14,11 +14,14 @@
 		<div class="col-md-12">
 			<div class="box box-solid">
 				<div class="box-header with-border">
-					<h3 class="box-title"><spring:message code="path.room.list"/></h3>
+					<h3 class="box-title">
+						<spring:message code="path.room.list" />
+					</h3>
 				</div>
 				<div class="box-body">
 					<div class="btn-group">
-						<a href="<c:url value="/room/add"/>" class="btn btn-success"><spring:message code="button.add"/></a>
+						<a href="<c:url value="/room/add"/>" class="btn btn-success"><spring:message
+								code="button.add" /></a>
 					</div>
 					<table id="room_table"
 						class="table table-bordered table-striped dataTable" role="grid"
@@ -39,7 +42,13 @@
 						</tfoot>
 						<c:if test="${roomList.size() > 0}">
 							<tbody>
-
+								<c:forEach items="${roomList }" var="room">
+									<tr>
+										<td>${room.name }</td>
+										<td>${room.comment }</td>
+										<td>${room.status }</td>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</c:if>
 

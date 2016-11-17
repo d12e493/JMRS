@@ -44,7 +44,18 @@ public class RoomController extends BaseController {
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("room-addEdit");
-		modelAndView.addObject(ACTION, "add");
+		modelAndView.addObject(ACTION, ACTION_ADD);
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public ModelAndView save(Room room) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/room/list");
+
+		if (room != null) {
+			roomService.insert(room);
+		}
+
 		return modelAndView;
 	}
 

@@ -42,7 +42,7 @@ public class Room implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+	@GeneratedValue
 	@Column(name = "room_id", unique = true, nullable = false)
 	public Integer getRoomId() {
 		return this.roomId;

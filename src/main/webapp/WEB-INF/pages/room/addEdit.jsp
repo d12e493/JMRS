@@ -22,14 +22,14 @@
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">Name</label>
 					<div class="col-md-3">
-						<input type="text" class="form-control" id=""
+						<input type="text" class="form-control" id="" name="name"
 							placeholder="Room Name">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">Comment</label>
 					<div class="col-md-5">
-						<textarea class="form-control" rows="3"
+						<textarea class="form-control" rows="3" name="comment"
 							placeholder="This is a special room..."></textarea>
 					</div>
 				</div>
@@ -37,9 +37,9 @@
 					<label for="" class="col-md-2 control-label">Status</label>
 					<div class="col-md-3 form-group">
 						<label class="radio-inline"> <input type="radio"
-							name="status" class="flat-blue" checked>&nbsp;啟用
+							name="status" class="flat-blue" value="1" checked>&nbsp;啟用
 						</label> <label class="radio-inline"> <input type="radio"
-							name="status" class="flat-blue">&nbsp;停用
+							name="status" class="flat-blue" value="0">&nbsp;停用
 						</label>
 					</div>
 				</div>
@@ -48,12 +48,12 @@
 		<!-- /.box-body -->
 		<div class="box-footer">
 			<div class="col-md-offset-2">
-				<a href="#" class="btn btn-primary"> <i class="fa fa-fw fa-save"></i>
-					<spring:message code="button.add" />
-				</a>
-				&nbsp;
-				<a href="#" class="btn btn-danger"> <i class="fa fa-fw fa-ban"></i>
-					<spring:message code="button.cancel" />
+				<a href="javascript:;" onclick="$('#room_form').submit();"
+					class="btn btn-primary"> <i class="fa fa-fw fa-save"></i> <spring:message
+						code="button.add" />
+				</a> &nbsp; <a href="<c:url value="/room/list"/>" class="btn btn-danger">
+					<i class="fa fa-fw fa-ban"></i> <spring:message
+						code="button.cancel" />
 				</a>
 			</div>
 		</div>
