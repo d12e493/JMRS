@@ -21,10 +21,9 @@ import idv.jmrs.service.RoomService;
 public class RoomController extends BaseController {
 
 	@Autowired
-	private RegionService regionService;
-
-	@Autowired
 	private RoomService roomService;
+
+	private Room room;
 
 	private List<Region> regionList = new ArrayList<Region>();
 
@@ -48,6 +47,17 @@ public class RoomController extends BaseController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public ModelAndView edit(Room room) {
+		ModelAndView modelAndView = new ModelAndView("room-addEdit");
+		modelAndView.addObject(ACTION, ACTION_EDIT);
+
+		room = roomService.findOne(Room.class, room.getRoomId());
+		modelAndView.addObject("room", room);
+
+		return modelAndView;
+	}
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(Room room) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/room/list");
@@ -59,9 +69,12 @@ public class RoomController extends BaseController {
 		return modelAndView;
 	}
 
-	@RequestMapping("/test")
-	public String test() {
-		return "test";
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
 }

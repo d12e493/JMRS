@@ -19,10 +19,11 @@
 			</c:choose>
 			<form class="form-horizontal" id="room_form" method="post"
 				action="${form_action}">
+				<input type="hidden" name="roomId" value="${room.roomId }"/>
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label">Name</label>
 					<div class="col-md-3">
-						<input type="text" class="form-control" id="" name="name"
+						<input type="text" class="form-control" id="" name="name" value="${room.name}"
 							placeholder="Room Name">
 					</div>
 				</div>
@@ -30,7 +31,7 @@
 					<label for="" class="col-md-2 control-label">Comment</label>
 					<div class="col-md-5">
 						<textarea class="form-control" rows="3" name="comment"
-							placeholder="This is a special room..."></textarea>
+							placeholder="This is a special room...">${room.comment }</textarea>
 					</div>
 				</div>
 				<div class="form-group">

@@ -20,17 +20,21 @@
 				</div>
 				<div class="box-body">
 					<div class="btn-group">
-						<a href="<c:url value="/room/add"/>" class="btn btn-success"><spring:message
-								code="button.add" /></a>
+						<a href="<c:url value="/room/add"/>" class="btn btn-success">
+							<i class="fa fa-fw fa-pencil"></i> <spring:message
+								code="button.add" />
+						</a>
 					</div>
 					<table id="room_table"
-						class="table table-bordered table-striped dataTable" role="grid"
-						aria-describedby="example1_info" cellspacing="0" width="100%">
+						class="table table-bordered table-striped table-hover dataTable"
+						role="grid" aria-describedby="example1_info" cellspacing="0"
+						width="100%">
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>Comment</th>
 								<th>Status</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tfoot>
@@ -38,6 +42,7 @@
 								<th>Name</th>
 								<th>Comment</th>
 								<th>Status</th>
+								<th>Action</th>
 							</tr>
 						</tfoot>
 						<c:if test="${roomList.size() > 0}">
@@ -47,6 +52,14 @@
 										<td>${room.name }</td>
 										<td>${room.comment }</td>
 										<td>${room.status }</td>
+										<td>
+											<button class="btn btn-info" onclick="edit(${room.roomId });">
+												<i class="fa fa-fw fa-edit"></i> Edit
+											</button> &nbsp;
+											<button class="btn btn-danger">
+												<i class="fa fa-fw fa-trash-o"></i>Remove
+											</button>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -58,3 +71,7 @@
 		</div>
 	</div>
 </section>
+<form id="action_form" method="post"
+	action="<c:url value="/room/edit"/>">
+	<input type="hidden" name="roomId" id="roomId" />
+</form>
