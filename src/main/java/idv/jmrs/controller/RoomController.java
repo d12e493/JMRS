@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import idv.jmrs.entity.Region;
 import idv.jmrs.entity.Room;
-import idv.jmrs.service.RegionService;
 import idv.jmrs.service.RoomService;
 
 @Controller
@@ -24,8 +22,6 @@ public class RoomController extends BaseController {
 	private RoomService roomService;
 
 	private Room room;
-
-	private List<Region> regionList = new ArrayList<Region>();
 
 	private List<Room> roomList = new ArrayList<Room>();
 
@@ -63,7 +59,29 @@ public class RoomController extends BaseController {
 		ModelAndView modelAndView = new ModelAndView("redirect:/room/list");
 
 		if (room != null) {
-			roomService.insert(room);
+			roomService.save(room);
+		}
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView update(Room room) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/room/list");
+
+		if (room != null) {
+			roomService.update(room);
+		}
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ModelAndView delete(Room room) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/room/list");
+
+		if (room != null) {
+			roomService.delete(Room.class, room.getRoomId());
 		}
 
 		return modelAndView;

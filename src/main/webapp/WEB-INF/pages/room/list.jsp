@@ -5,6 +5,9 @@
 <link rel="stylesheet"
 	href="<c:url value="/plugins/datatables/dataTables.bootstrap.css"/>">
 <script src="<c:url value="/js/room/list.js"/>"></script>
+<script type="text/javascript">
+	var delete_url = '<c:url value="/room/delete" />';
+</script>
 <script
 	src="<c:url value="/plugins/datatables/jquery.dataTables.min.js"/>"></script>
 <script
@@ -31,18 +34,18 @@
 						width="100%">
 						<thead>
 							<tr>
-								<th>Name</th>
-								<th>Comment</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th><spring:message code="form.name" /></th>
+								<th><spring:message code="form.comment" /></th>
+								<th><spring:message code="form.status" /></th>
+								<th><spring:message code="form.action" /></th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
-								<th>Name</th>
-								<th>Comment</th>
-								<th>Status</th>
-								<th>Action</th>
+								<th><spring:message code="form.name" /></th>
+								<th><spring:message code="form.comment" /></th>
+								<th><spring:message code="form.status" /></th>
+								<th><spring:message code="form.action" /></th>
 							</tr>
 						</tfoot>
 						<c:if test="${roomList.size() > 0}">
@@ -54,10 +57,12 @@
 										<td>${room.status }</td>
 										<td>
 											<button class="btn btn-info" onclick="edit(${room.roomId });">
-												<i class="fa fa-fw fa-edit"></i> Edit
+												<i class="fa fa-fw fa-edit"></i>
+												<spring:message code="button.edit" />
 											</button> &nbsp;
-											<button class="btn btn-danger">
-												<i class="fa fa-fw fa-trash-o"></i>Remove
+											<button class="btn btn-danger" onclick="deleteRoom(${room.roomId});">
+												<i class="fa fa-fw fa-trash-o"></i>
+												<spring:message code="button.delete" />
 											</button>
 										</td>
 									</tr>

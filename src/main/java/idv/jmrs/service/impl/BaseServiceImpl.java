@@ -10,8 +10,13 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import idv.jmrs.service.BaseService;
 
+@Component
+@Transactional
 public class BaseServiceImpl implements BaseService {
 
 	@PersistenceContext
