@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <script src="<c:url value="/js/room/addEdit.js"/>"></script>
 <section class="content">
@@ -28,10 +29,8 @@
 				</c:when>
 			</c:choose>
 			<form class="form-horizontal" id="user_form" method="post"
-				autocomplete="off" action="${form_action}">
-				<input type="text" style="display: none" /> <input type="password"
-					style="display: none"> <input type="hidden" name="userId"
-					value="${user.userId }" />
+				action="${form_action}">
+				<input type="hidden" name="userId" value="${user.userId }" />
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label"><spring:message
 							code="form.name" /></label>
@@ -45,13 +44,28 @@
 							code="form.password" /></label>
 					<div class="col-md-2">
 						<input type="password" class="form-control" id="" name="password"
-							value="" placeholder="User Password">
+							autocomplete="new-password" value="" placeholder="User Password">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label"><spring:message
 							code="form.role" /></label>
-					<div class="col-md-5"></div>
+					<div class="col-md-5 form-group">
+						<c:forEach var="role" items="${roles}" varStatus="status">
+							<label class="radio-inline"> <input type="radio"
+								name="role" class="flat-blue" value="${role }"
+								<c:choose>
+									<c:when test="${action == 'add' && status.index == 0}">
+									checked
+									</c:when>
+									<c:when test="${user.role == role }">
+									checked
+									</c:when>
+								</c:choose> />
+								&nbsp;<spring:message code="form.role.${fn:toLowerCase(role)}" />
+							</label>
+						</c:forEach>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-2 control-label"><spring:message
@@ -62,8 +76,8 @@
 							<c:if test="${user.status != '0' }">checked</c:if>>&nbsp;<spring:message
 								code="form.status.active" />
 						</label> <label class="radio-inline"> <input type="radio"
-							<c:if test="${user.status == '0' }">checked</c:if> name="status"
-							class="flat-blue" value="0">&nbsp;<spring:message
+							<c:if test="${user.status == '0' }">checked</c:if>
+							name="status" class="flat-blue" value="0"> &nbsp; <spring:message
 								code="form.status.inactive" />
 						</label>
 					</div>

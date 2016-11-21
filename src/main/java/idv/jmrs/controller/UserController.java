@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import idv.jmrs.entity.User;
+import idv.jmrs.enums.Role;
 import idv.jmrs.service.UserService;
 
 @Controller
@@ -40,6 +41,7 @@ public class UserController extends BaseController {
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("user-addEdit");
 		modelAndView.addObject(ACTION, ACTION_ADD);
+		modelAndView.addObject("roles", Role.values());
 		return modelAndView;
 	}
 
@@ -47,6 +49,7 @@ public class UserController extends BaseController {
 	public ModelAndView edit(User user) {
 		ModelAndView modelAndView = new ModelAndView("user-addEdit");
 		modelAndView.addObject(ACTION, ACTION_EDIT);
+		modelAndView.addObject("roles", Role.values());
 
 		user = userService.findOne(User.class, user.getUserId());
 		modelAndView.addObject("user", user);
