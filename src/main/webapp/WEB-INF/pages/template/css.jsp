@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="<c:url value="/dist/css/skins/skin-blue-light.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/plugins/iCheck/all.css"/>">
 <link rel="stylesheet" href="<c:url value="/plugins/datepicker/datepicker3.css"/>">
+
 <style>
 .btn {
     font-weight: bold;
