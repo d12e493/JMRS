@@ -6,7 +6,23 @@
 <link rel="stylesheet"
 	href="<c:url value="/plugins/fullcalendar/fullcalendar.print.css"/>"
 	media="print">
+<style>
+.td_time_hover {
+	background-color: #00c0ef;
+}
 
+div.fc-slats table td, th {
+	position: relative;
+}
+
+div.fc-slats  table {
+	overflow: hidden;
+}
+
+.fc-today {
+	background: transparent !important;
+}
+</style>
 <div id="calendar"></div>
 <script src="<c:url value="/js/moment.min.js"/>"></script>
 <script src="<c:url value="/js/fullcalendar.min.js"/>"></script>
@@ -25,32 +41,79 @@
 			buttonText : {
 				today : 'today',
 			},
-			resources: [
-						{ id: 'a', title: 'Room A', eventColor: 'blue' },
-						{ id: 'b', title: 'Room B', eventColor: 'green' },
-						{ id: 'c', title: 'Room C', eventColor: 'orange' },
-						{ id: 'd', title: 'Room D', eventColor: 'red' }
-					],
-			events: [
-						{ id: '1', resourceId: 'a', start: '10:00:00', end: '12:00:00', title: 'event 1' },
-						{ id: '2', resourceId: 'a', start: '13:00:00', end: '15:00:00', title: 'event 2' },
-						{ id: '3', resourceId: 'b', start: '12:00:00', end: '14:00:00', title: 'event 3' },
-						{ id: '4', resourceId: 'c', start: '09:30:00', end: '13:30:00', title: 'event 4' },
-						{ id: '5', resourceId: 'd', start: '10:00:00', end: '15:00:00', title: 'event 5' },
-						{ id: '10', resourceId: 'd', start: '16:00:00', end: '17:00:00', title: 'event test' }
-					],
+			resources : [ {
+				id : 'a',
+				title : 'Room A',
+				eventColor : '#23527c'
+			}, {
+				id : 'b',
+				title : 'Room B',
+				eventColor : '#3a87ad'
+			}, {
+				id : 'c',
+				title : 'Room C',
+				eventColor : '#23527c'
+			}, {
+				id : 'd',
+				title : 'Room D',
+				eventColor : '#23527c'
+			} ],
+			events : [ {
+				id : '1',
+				resourceId : 'a',
+				start : '10:00:00',
+				end : '12:00:00',
+				title : 'event 1'
+			}, {
+				id : '2',
+				resourceId : 'a',
+				start : '13:00:00',
+				end : '15:00:00',
+				title : 'event 2'
+			}, {
+				id : '3',
+				resourceId : 'b',
+				start : '12:00:00',
+				end : '14:00:00',
+				title : 'event 3'
+			}, {
+				id : '4',
+				resourceId : 'c',
+				start : '09:30:00',
+				end : '13:30:00',
+				title : 'event 4'
+			}, {
+				id : '5',
+				resourceId : 'd',
+				start : '10:00:00',
+				end : '15:00:00',
+				title : 'event 5'
+			}, {
+				id : '10',
+				resourceId : 'd',
+				start : '16:00:00',
+				end : '17:00:00',
+				title : 'event test'
+			} ],
 			timeFormat : 'HH:mm',
 			editable : false,
 			droppable : false,
-			defaultView: 'agendaDay',
+			defaultView : 'agendaDay',
 			allDaySlot : false,
-			selectable: true,
+			defaultDate : date,
+			selectable : true,
 			minTime : '08:00:00',
 			maxTime : '19:00:00',
-			slotDuration : '00:15:00',
-			slotLabelInterval  : '00:15:00',
+			slotDuration : '00:30:00',
+			slotLabelInterval : '00:30:00',
 			slotLabelFormat : 'HH:mm',
-			schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+			schedulerLicenseKey : 'GPL-My-Project-Is-Open-Source',
 		});
+
+		$('div.fc-slats table tr').hover(function() {
+			$(this).find('.fc-time').addClass("td_time_hover");
+		}, function() {
+			$(this).find('.fc-time').removeClass("td_time_hover");
+		})
 	});
 </script>
