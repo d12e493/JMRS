@@ -17,11 +17,7 @@
 	<div class="wrapper">
 		<tiles:insertAttribute name="header" />
 
-		<tiles:insertAttribute name="sideBar" />
-
-		<div class="content-wrapper">
-			<tiles:insertAttribute name="body" />
-		</div>
+		<tiles:insertAttribute name="body" />
 
 		<tiles:insertAttribute name="footer" />
 	</div>

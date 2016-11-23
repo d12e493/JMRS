@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="<c:url value="/ionicons-2.0.1/css/ionicons.min.css"/>">
 
 <!-- Theme style -->
-<link rel="stylesheet" href="<c:url value="/dist/css/AdminLTE.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/dist/css/AdminLTE.css"/>">
 <link rel="stylesheet" href="<c:url value="/dist/css/skins/skin-blue-light.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/plugins/iCheck/all.css"/>">
 <link rel="stylesheet" href="<c:url value="/plugins/datepicker/datepicker3.css"/>">
