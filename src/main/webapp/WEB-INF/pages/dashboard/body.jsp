@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <link rel="stylesheet"
 	href="<c:url value="/plugins/fullcalendar/fullcalendar.min.css"/>">
 <link rel="stylesheet"
@@ -22,98 +23,99 @@ div.fc-slats  table {
 .fc-today {
 	background: transparent !important;
 }
+
+.th-hover {
+	background-color: #b9ccb1 !important;
+}
+
+table tbody tr td:first-child {
+	text-align: center;
+}
+
+table thead tr th {
+	text-align: center;
+}
 </style>
-<div id="calendar"></div>
+<section class="content">
+	<div class="box box-default">
+		<div class="box-header with-border">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-calendar"></i>
+					</div>
+					<input type="text" class="form-control pull-right" id="datepicker">
+				</div>
+				<div id="dateDivPicker"></div>
+			</div>
+			<div class="col-md-5"></div>
+		</div>
+		<div class="box-body">
+			<c:set var="startTime" value="0800" />
+			<c:set var="endTime" value="1900" />
+			<table class="table table-hover table-bordered">
+				<thead class="">
+					<tr>
+						<th>Time</th>
+						<th class="success" style="width: 30%">Room 1</th>
+						<th class="success" style="width: 30%">Room AA</th>
+						<th class="success" style="width: 30%">Room D.C.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="time" begin="0" step="50"
+						end="${endTime-startTime}">
+						<fmt:parseNumber var="hour" integerOnly="true" pattern="##"
+							value="${startTime/100+time/100}" />
+						<fmt:formatNumber type="number" value="${hour }" var="hour_format"
+							minIntegerDigits="2" />
+						<tr>
+							<td class="info"><c:choose>
+									<c:when test="${time%100 == 0 }">
+										${hour_format}:00
+									</c:when>
+									<c:otherwise>
+									${hour_format}:30
+								</c:otherwise>
+								</c:choose></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
 <script src="<c:url value="/js/moment.min.js"/>"></script>
-<script src="<c:url value="/js/fullcalendar.min.js"/>"></script>
-<script src="<c:url value="/js/scheduler.min.js"/>"></script>
 <script type="text/javascript">
 	$(function() {
 
-		var date = new Date();
-		var d = date.getDate(), m = date.getMonth(), y = date.getFullYear();
-		$('#calendar').fullCalendar({
-			header : {
-				left : 'prev',
-				center : 'title today',
-				right : 'next'
-			},
-			buttonText : {
-				today : 'today',
-			},
-			resources : [ {
-				id : 'a',
-				title : 'Room A',
-				eventColor : '#23527c'
-			}, {
-				id : 'b',
-				title : 'Room B',
-				eventColor : '#3a87ad'
-			}, {
-				id : 'c',
-				title : 'Room C',
-				eventColor : '#23527c'
-			}, {
-				id : 'd',
-				title : 'Room D',
-				eventColor : '#23527c'
-			} ],
-			events : [ {
-				id : '1',
-				resourceId : 'a',
-				start : '10:00:00',
-				end : '12:00:00',
-				title : 'event 1'
-			}, {
-				id : '2',
-				resourceId : 'a',
-				start : '13:00:00',
-				end : '15:00:00',
-				title : 'event 2'
-			}, {
-				id : '3',
-				resourceId : 'b',
-				start : '12:00:00',
-				end : '14:00:00',
-				title : 'event 3'
-			}, {
-				id : '4',
-				resourceId : 'c',
-				start : '09:30:00',
-				end : '13:30:00',
-				title : 'event 4'
-			}, {
-				id : '5',
-				resourceId : 'd',
-				start : '10:00:00',
-				end : '15:00:00',
-				title : 'event 5'
-			}, {
-				id : '10',
-				resourceId : 'd',
-				start : '16:00:00',
-				end : '17:00:00',
-				title : 'event test'
-			} ],
-			timeFormat : 'HH:mm',
-			editable : false,
-			droppable : false,
-			defaultView : 'agendaDay',
-			allDaySlot : false,
-			defaultDate : date,
-			selectable : true,
-			minTime : '08:00:00',
-			maxTime : '19:00:00',
-			slotDuration : '00:30:00',
-			slotLabelInterval : '00:30:00',
-			slotLabelFormat : 'HH:mm',
-			schedulerLicenseKey : 'GPL-My-Project-Is-Open-Source',
-		});
+		var today = new Date();
 
-		$('div.fc-slats table tr').hover(function() {
-			$(this).find('.fc-time').addClass("td_time_hover");
+		$('#datepicker').datepicker({
+			autoclose : true,
+		}).datepicker("setDate", "0");
+
+		$("#dateDivPicker").datepicker();
+		
+		$('table tbody tr td').hover(function() {
+			var th = getThByTd($(this));
+			th.addClass('th-hover');
 		}, function() {
-			$(this).find('.fc-time').removeClass("td_time_hover");
-		})
+			var th = getThByTd($(this));
+			th.removeClass('th-hover');
+		});
 	});
+
+	function getThByTd(tdObj) {
+		var index = tdObj.index();
+		var table = tdObj.closest('table');
+		console.log(index);
+		var th = $(table).find('thead th:nth-child(' + (index+1) + ')');
+		console.log(th.html());
+		return th;
+	}
 </script>
