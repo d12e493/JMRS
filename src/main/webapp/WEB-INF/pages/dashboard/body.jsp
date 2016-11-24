@@ -9,7 +9,7 @@
 	media="print">
 <style>
 .td_time_hover {
-	background-color: #00c0ef;
+	background-color: #f9ffba;
 }
 
 div.fc-slats table td, th {
@@ -90,32 +90,4 @@ table thead tr th {
 	</div>
 </section>
 <script src="<c:url value="/js/moment.min.js"/>"></script>
-<script type="text/javascript">
-	$(function() {
-
-		var today = new Date();
-
-		$('#datepicker').datepicker({
-			autoclose : true,
-		}).datepicker("setDate", "0");
-
-		$("#dateDivPicker").datepicker();
-		
-		$('table tbody tr td').hover(function() {
-			var th = getThByTd($(this));
-			th.addClass('th-hover');
-		}, function() {
-			var th = getThByTd($(this));
-			th.removeClass('th-hover');
-		});
-	});
-
-	function getThByTd(tdObj) {
-		var index = tdObj.index();
-		var table = tdObj.closest('table');
-		console.log(index);
-		var th = $(table).find('thead th:nth-child(' + (index+1) + ')');
-		console.log(th.html());
-		return th;
-	}
-</script>
+<script src="<c:url value="/js/dashboard/list.js"/>"></script>
