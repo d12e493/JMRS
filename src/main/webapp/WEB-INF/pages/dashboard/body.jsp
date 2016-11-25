@@ -7,39 +7,7 @@
 <link rel="stylesheet"
 	href="<c:url value="/plugins/fullcalendar/fullcalendar.print.css"/>"
 	media="print">
-<style>
-.td_time_hover {
-	background-color: #f9ffba;
-}
-
-div.fc-slats table td, th {
-	position: relative;
-}
-
-div.fc-slats  table {
-	overflow: hidden;
-}
-
-.fc-today {
-	background: transparent !important;
-}
-
-.th-hover {
-	background-color: #b9ccb1 !important;
-}
-
-#meeting_table tbody tr td:first-child {
-	text-align: center;
-}
-
-#meeting_table thead tr th {
-	text-align: center;
-}
-
-#meeting_table tbody tr td:not(:first-child ) {
-	cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="<c:url value="/css/dashboard.css"/>">
 <section class="content">
 	<div class="box box-default">
 		<div class="box-header with-border">
@@ -58,6 +26,7 @@ div.fc-slats  table {
 		<div class="box-body">
 			<c:set var="startTime" value="0800" />
 			<c:set var="endTime" value="1900" />
+			<input type="hidden" name="currentDay" id="currentDay" value="${currentDay }"/>
 			<table class="table table-hover table-bordered" id="meeting_table">
 				<thead class="">
 					<tr>
@@ -74,15 +43,16 @@ div.fc-slats  table {
 							value="${startTime/100+time/100}" />
 						<fmt:formatNumber type="number" value="${hour }" var="hour_format"
 							minIntegerDigits="2" />
+						<c:choose>
+							<c:when test="${time%100 == 0 }">
+								<c:set var="hour_time" value="${hour_format}:00" />
+							</c:when>
+							<c:otherwise>
+								<c:set var="hour_time" value="${hour_format}:30" />
+							</c:otherwise>
+						</c:choose>
 						<tr>
-							<td class="info"><c:choose>
-									<c:when test="${time%100 == 0 }">
-										${hour_format}:00
-									</c:when>
-									<c:otherwise>
-									${hour_format}:30
-								</c:otherwise>
-								</c:choose></td>
+							<td class="info" time="${hour_time }">${hour_time}</td>
 							<td type="free">&nbsp;</td>
 							<td type="free">&nbsp;</td>
 							<td type="free">&nbsp;</td>
