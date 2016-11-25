@@ -18,7 +18,7 @@ $(function() {
 		th.removeClass('th-hover');
 	});
 
-	$("#meeting_table tbody tr td[type='free']").not(":first-child)").click(
+	$("#meeting_table tbody tr td[type='free']").not(":first-child").click(
 			function() {
 				test();
 			});
