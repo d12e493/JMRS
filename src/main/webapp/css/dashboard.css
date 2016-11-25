@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+.td_time_hover {
+	background-color: #f9ffba;
+}
+
+div.fc-slats table td, th {
+	position: relative;
+}
+
+div.fc-slats  table {
+	overflow: hidden;
+}
+
+.fc-today {
+	background: transparent !important;
+}
+
+.th-hover {
+	background-color: #b9ccb1 !important;
+}
+
+#meeting_table tbody tr td:first-child {
+	text-align: center;
+}
+
+#meeting_table thead tr th {
+	text-align: center;
+}
+#meeting_table tbody tr td:not(:first-child ){
+cursor:pointer;
+}
