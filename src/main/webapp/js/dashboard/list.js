@@ -8,7 +8,7 @@ $(function() {
 
 	$("#dateDivPicker").datepicker();
 
-	$('table tbody tr td').hover(function() {
+	$('#meeting_table tbody tr td').hover(function() {
 		var th = getThByTd($(this));
 		$(this).addClass('td_time_hover');
 		th.addClass('th-hover');
@@ -17,6 +17,11 @@ $(function() {
 		$(this).removeClass('td_time_hover');
 		th.removeClass('th-hover');
 	});
+
+	$("#meeting_table tbody tr td[type='free']").not(":first-child)").click(
+			function() {
+				test();
+			});
 });
 
 function getThByTd(tdObj) {
@@ -24,4 +29,8 @@ function getThByTd(tdObj) {
 	var table = tdObj.closest('table');
 	var th = $(table).find('thead th:nth-child(' + (index + 1) + ')');
 	return th;
+}
+
+function test() {
+	console.log('test');
 }
