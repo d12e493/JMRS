@@ -16,9 +16,9 @@
 <body class="hold-transition skin-blue-light sidebar-mini">
 	<div class="wrapper">
 		<tiles:insertAttribute name="header" />
-
-		<tiles:insertAttribute name="body" />
-
+		<div class="content-wrapper">
+			<tiles:insertAttribute name="body" />
+		</div>
 		<tiles:insertAttribute name="footer" />
 	</div>
 </body>
