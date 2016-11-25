@@ -28,12 +28,16 @@ div.fc-slats  table {
 	background-color: #b9ccb1 !important;
 }
 
-table tbody tr td:first-child {
+#meeting_table tbody tr td:first-child {
 	text-align: center;
 }
 
-table thead tr th {
+#meeting_table thead tr th {
 	text-align: center;
+}
+
+#meeting_table tbody tr td:not(:first-child ) {
+	cursor: pointer;
 }
 </style>
 <section class="content">
@@ -54,7 +58,7 @@ table thead tr th {
 		<div class="box-body">
 			<c:set var="startTime" value="0800" />
 			<c:set var="endTime" value="1900" />
-			<table class="table table-hover table-bordered">
+			<table class="table table-hover table-bordered" id="meeting_table">
 				<thead class="">
 					<tr>
 						<th>Time</th>
@@ -79,9 +83,9 @@ table thead tr th {
 									${hour_format}:30
 								</c:otherwise>
 								</c:choose></td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
+							<td type="free">&nbsp;</td>
+							<td type="free">&nbsp;</td>
+							<td type="free">&nbsp;</td>
 						</tr>
 					</c:forEach>
 				</tbody>
