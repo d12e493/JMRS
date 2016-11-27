@@ -2,12 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet"
 	href="<c:url value="/plugins/fullcalendar/fullcalendar.min.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/plugins/fullcalendar/fullcalendar.print.css"/>"
 	media="print">
 <link rel="stylesheet" href="<c:url value="/css/dashboard.css"/>">
+<script type="text/javascript">
+	var booking_add_url='<c:url value="/book/add"/>';
+</script>
 <section class="content">
 	<div class="box box-default">
 		<div class="box-header with-border">
@@ -24,42 +28,51 @@
 			<div class="col-md-5"></div>
 		</div>
 		<div class="box-body">
-			<c:set var="startTime" value="0800" />
-			<c:set var="endTime" value="1900" />
-			<input type="hidden" name="currentDay" id="currentDay" value="${currentDay }"/>
-			<table class="table table-hover table-bordered" id="meeting_table">
-				<thead class="">
-					<tr>
-						<th>Time</th>
-						<th class="success" style="width: 30%">Room 1</th>
-						<th class="success" style="width: 30%">Room AA</th>
-						<th class="success" style="width: 30%">Room D.C.</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="time" begin="0" step="50"
-						end="${endTime-startTime}">
-						<fmt:parseNumber var="hour" integerOnly="true" pattern="##"
-							value="${startTime/100+time/100}" />
-						<fmt:formatNumber type="number" value="${hour }" var="hour_format"
-							minIntegerDigits="2" />
-						<c:choose>
-							<c:when test="${time%100 == 0 }">
-								<c:set var="hour_time" value="${hour_format}:00" />
-							</c:when>
-							<c:otherwise>
-								<c:set var="hour_time" value="${hour_format}:30" />
-							</c:otherwise>
-						</c:choose>
+			<form id="book_form" method="post">
+				<c:set var="startTime" value="0800" />
+				<c:set var="endTime" value="1900" />
+				<input type="hidden" name="bookDate" id="currentDay"
+					value="${currentDay }" /> <input type="hidden" name="room.roomId"
+					id="room_id" value="" /> <input type="hidden" name="startTime"
+					id="start_time" value="" />
+				<table class="table table-hover table-bordered" id="meeting_table">
+					<thead class="">
 						<tr>
-							<td class="info" time="${hour_time }">${hour_time}</td>
-							<td type="free">&nbsp;</td>
-							<td type="free">&nbsp;</td>
-							<td type="free">&nbsp;</td>
+							<th>Time</th>
+							<c:if test="${fn:length(roomList) gt 0}">
+								<c:forEach var="room" items="${roomList }">
+									<th class="success" style="width: ${90/fn:length(roomList)}%">${room.name }</th>
+								</c:forEach>
+							</c:if>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach var="time" begin="0" step="50"
+							end="${endTime-startTime}">
+							<fmt:parseNumber var="hour" integerOnly="true" pattern="##"
+								value="${startTime/100+time/100}" />
+							<fmt:formatNumber type="number" value="${hour }"
+								var="hour_format" minIntegerDigits="2" />
+							<c:choose>
+								<c:when test="${time%100 == 0 }">
+									<c:set var="hour_time" value="${hour_format}:00" />
+								</c:when>
+								<c:otherwise>
+									<c:set var="hour_time" value="${hour_format}:30" />
+								</c:otherwise>
+							</c:choose>
+							<tr time="${hour_time }">
+								<td class="info">${hour_time}</td>
+								<c:if test="${fn:length(roomList) gt 0}">
+									<c:forEach var="room" items="${roomList }">
+										<td type="free" room="${room.roomId }">&nbsp;</td>
+									</c:forEach>
+								</c:if>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</form>
 		</div>
 	</div>
 </section>
