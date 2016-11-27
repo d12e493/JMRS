@@ -20,7 +20,14 @@ $(function() {
 
 	$("#meeting_table tbody tr td[type='free']").not(":first-child").click(
 			function() {
-				test();
+				var time = $(this).closest('tr').attr('time');
+				var room = $(this).attr('room');
+
+				$('#room_id').val(room);
+				$('#start_time').val(time);
+
+				$('#book_form').attr('action', booking_add_url).submit();
+
 			});
 });
 
