@@ -12,6 +12,7 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="<c:url value="/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="<c:url value="/plugins/datepicker/bootstrap-datepicker.js"/>"></script>
+
 <!-- AdminLTE App -->
 <script src="<c:url value="/dist/js/app.min.js"/>"></script>
 <script src="<c:url value="/plugins/timepicker/bootstrap-timepicker.min.js"/>"></script>

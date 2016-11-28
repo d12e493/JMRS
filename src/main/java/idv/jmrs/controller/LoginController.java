@@ -1,6 +1,5 @@
 package idv.jmrs.controller;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +25,6 @@ public class LoginController extends BaseController {
 	@Autowired
 	private RoomService roomService;
 
-	private String currentDay;
 
 	private List<Room> roomList = new ArrayList<Room>();
 
@@ -40,7 +38,6 @@ public class LoginController extends BaseController {
 		LOG.info("-------currentDay-------- : " + currentDay);
 
 		if (currentDay == null) {
-			SimpleDateFormat smt = new SimpleDateFormat("yyyy/MM/dd");
 			currentDay = smt.format(new Date());
 		}
 		modelAndView.addObject("currentDay", currentDay);

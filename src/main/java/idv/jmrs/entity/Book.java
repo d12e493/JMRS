@@ -79,9 +79,10 @@ public class Book implements java.io.Serializable {
 
 	public void setStartTime(String startTime) throws ParseException {
 		if (startTime != null) {
-			SimpleDateFormat smt = new SimpleDateFormat("hh:mm");
+			SimpleDateFormat smt = new SimpleDateFormat("HH:mm");
 			Date date = smt.parse(startTime);
 			this.startTime = new Time(date.getTime());
+			System.out.println(this.startTime);
 		}
 	}
 
@@ -90,8 +91,12 @@ public class Book implements java.io.Serializable {
 		return this.endTime;
 	}
 
-	public void setEndTime(Time endTime) {
-		this.endTime = endTime;
+	public void setEndTime(String endTime) throws ParseException {
+		if (endTime != null) {
+			SimpleDateFormat smt = new SimpleDateFormat("HH:mm");
+			Date date = smt.parse(endTime);
+			this.endTime = new Time(date.getTime());
+		}
 	}
 
 	@Column(name = "name", length = 200)
@@ -116,8 +121,12 @@ public class Book implements java.io.Serializable {
 		return bookDate;
 	}
 
-	public void setBookDate(Date bookDate) {
-		this.bookDate = bookDate;
+	public void setBookDate(String bookDate) throws ParseException {
+		if (bookDate != null) {
+			SimpleDateFormat smt = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = smt.parse(bookDate);
+			this.bookDate = new Date(date.getTime());
+		}
 	}
 
 }
