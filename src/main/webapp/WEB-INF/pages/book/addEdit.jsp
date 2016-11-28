@@ -59,6 +59,16 @@
 					</div>
 				</div>
 				<!-- room time -->
+				<div class="form-group">
+					<label for="" class="col-md-2 control-label"><spring:message
+							code="form.time" /></label>
+					<div class="col-md-5">
+						<input type="text" class="" id="timeStart"
+							value="<fmt:formatDate pattern="hh:mm" value="${book.startTime }"/>" />
+						&nbsp;~&nbsp; <input type="text" class="" id="timeEnd"
+							value="<fmt:formatDate pattern="hh:mm" value="${book.endTime }"/>" />
+					</div>
+				</div>
 			</form>
 		</div>
 		<!-- /.box-body -->
