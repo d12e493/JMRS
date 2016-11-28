@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<script type="text/javascript">
+	var startTime = '<fmt:formatDate pattern="HH:mm" value="${book.startTime }"/>';
+	var endTime = '<fmt:formatDate pattern="HH:mm" value="${book.endTime }"/>';
+</script>
 <script src="<c:url value="/js/book/addEdit.js"/>"></script>
 <section class="content">
 	<div class="box box-success">
@@ -54,7 +58,7 @@
 					<label for="" class="col-md-2 control-label"><spring:message
 							code="form.date" /></label>
 					<div class="col-md-5">
-						<input type="text" class="form-control" id="datepicker"
+						<input type="text" class="form-control" id="datepicker" name="bookDate"
 							value="<fmt:formatDate pattern="yyyy-MM-dd" value="${book.bookDate }"/>" />
 					</div>
 				</div>
@@ -63,10 +67,14 @@
 					<label for="" class="col-md-2 control-label"><spring:message
 							code="form.time" /></label>
 					<div class="col-md-5">
-						<input type="text" class="" id="timeStart"
-							value="<fmt:formatDate pattern="hh:mm" value="${book.startTime }"/>" />
-						&nbsp;~&nbsp; <input type="text" class="" id="timeEnd"
-							value="<fmt:formatDate pattern="hh:mm" value="${book.endTime }"/>" />
+						<jsp:include page="/WEB-INF/pages/common/timeSelect.jsp">
+							<jsp:param name="selectId" value="startTime" />
+						</jsp:include>
+						&nbsp;~&nbsp;
+						<jsp:include page="/WEB-INF/pages/common/timeSelect.jsp">
+							<jsp:param name="selectId" value="endTime" />
+						</jsp:include>
+						&nbsp;共 <span id="duration" class="text-red"></span> 小時
 					</div>
 				</div>
 			</form>

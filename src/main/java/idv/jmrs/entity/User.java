@@ -35,6 +35,10 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
+	public User(Integer userId) {
+		this.userId = userId;
+	}
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "user_id", unique = true, nullable = false)

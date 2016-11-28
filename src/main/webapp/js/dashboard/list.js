@@ -4,6 +4,7 @@ $(function() {
 
 	$('#datepicker').datepicker({
 		autoclose : true,
+		format : 'yyyy-mm-dd',
 	}).datepicker("setDate", "0");
 
 	$("#dateDivPicker").datepicker();
