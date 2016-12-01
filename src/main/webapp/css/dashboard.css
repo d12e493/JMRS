@@ -1,6 +1,12 @@
 @CHARSET "UTF-8";
+table{
+	border-collapse:separate;
+}
+
 .td_time_hover {
-	background-color: #f9ffba;
+	background-color: #feffd0!important;
+	border-color: #fdff83!important;
+	border-width: 1px !important;
 }
 
 div.fc-slats table td, th {
@@ -26,6 +32,13 @@ div.fc-slats  table {
 #meeting_table thead tr th {
 	text-align: center;
 }
+
 #meeting_table tbody tr td:not(:first-child ){
-cursor:pointer;
+	cursor: pointer;
+}
+
+#meeting_table tbody tr td.booking {
+	background-color: #ffe3cb;
+	border-color: #ebb1a5;
+	border-width: 1px 1px 1px 1px !important;
 }

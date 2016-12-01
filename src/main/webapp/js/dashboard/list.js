@@ -9,33 +9,40 @@ $(function() {
 
 	$("#dateDivPicker").datepicker();
 
-	$('#meeting_table tbody tr td').hover(function() {
+	$('#meeting_table tbody tr td').not(":first-child").hover(function() {
 		var th = getThByTd($(this));
-		$(this).addClass('td_time_hover');
 		th.addClass('th-hover');
+		$(this).addClass('td_time_hover');
 	}, function() {
 		var th = getThByTd($(this));
-		$(this).removeClass('td_time_hover');
 		th.removeClass('th-hover');
+		$(this).removeClass('td_time_hover');
 	});
 
-	$("#meeting_table tbody tr td[type='free']").not(":first-child").click(
-			function() {
-				var time = $(this).closest('tr').attr('time');
-				var room = $(this).attr('room');
+	$("#meeting_table tbody tr td").not(":first-child").click(function() {
+		console.log($(this).attr('type'));
+		// add
+		if ($(this).attr('type') == 'free') {
+			var time = $(this).closest('tr').attr('time');
+			var room = $(this).attr('room');
 
-				$('#room_id').val(room);
-				$('#start_time').val(time);
+			$('#room_id').val(room);
+			$('#start_time').val(time);
 
-				$('#book_form').attr('action', booking_add_url).submit();
+			$('#book_form').attr('action', booking_add_url).submit();
+		}
+		// edit
+		else if ($(this).attr('type') == 'booking') {
+			$('#book_id').val($(this).attr('bookid'));
+			$('#book_form').attr('action', booking_edit_url).submit();
+		}
 
-			});
+	});
 });
 
 function getThByTd(tdObj) {
-	var index = tdObj.index();
-	var table = tdObj.closest('table');
-	var th = $(table).find('thead th:nth-child(' + (index + 1) + ')');
+	var index = tdObj.attr('room');
+	var th = $('th[roomId="' + index + '"]');
 	return th;
 }
 
