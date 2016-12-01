@@ -58,7 +58,7 @@
 					<label for="" class="col-md-2 control-label"><spring:message
 							code="form.date" /></label>
 					<div class="col-md-5">
-						<input type="text" class="form-control" id="datepicker" name="bookDate"
+						<input type="text" class="form-control" id="datepicker" name="date"
 							value="<fmt:formatDate pattern="yyyy-MM-dd" value="${book.bookDate }"/>" />
 					</div>
 				</div>
@@ -68,11 +68,11 @@
 							code="form.time" /></label>
 					<div class="col-md-5">
 						<jsp:include page="/WEB-INF/pages/common/timeSelect.jsp">
-							<jsp:param name="selectId" value="startTime" />
+							<jsp:param name="selectId" value="start" />
 						</jsp:include>
 						&nbsp;~&nbsp;
 						<jsp:include page="/WEB-INF/pages/common/timeSelect.jsp">
-							<jsp:param name="selectId" value="endTime" />
+							<jsp:param name="selectId" value="end" />
 						</jsp:include>
 						&nbsp;共 <span id="duration" class="text-red"></span> 小時
 					</div>
