@@ -10,10 +10,10 @@ $(function() {
 	}
 	if (endTime != '') {
 		$('#end').val(endTime);
-	} else {
-		// 把小於 startTime 的選項全部刪掉
-		setEndTimeByStartTime(startTime)
 	}
+	// 把小於 startTime 的選項全部刪掉
+	setEndTimeByStartTime(startTime)
+	
 
 	$('#start').on('change', function() {
 		setEndTimeByStartTime($(this).val());
@@ -45,6 +45,10 @@ function setEndTimeByStartTime(start) {
 	countDuration();
 }
 
+/**
+ * 計算共幾小時
+ * 
+ */
 function countDuration() {
 
 	var start = $('#start').val().split(':');
