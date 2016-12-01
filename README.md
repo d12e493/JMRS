@@ -1,6 +1,9 @@
 ## Introduction
 Meeting Room Booking System for java base.
 
+## Demo view
+<img src="doc/images/dashboard.png" width="350"/>
+
 ## Features
 1. Web base and simple use.
 1. Multiple language support (i18n).
