@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<c:url value="/css/dashboard.css"/>">
 <script type="text/javascript">
 	var booking_add_url = '<c:url value="/book/add"/>';
+	var booking_edit_url = '<c:url value="/book/edit"/>';
 </script>
 <section class="content">
 	<div class="box box-default">
@@ -27,6 +28,7 @@
 			</div>
 			<div class="col-md-5"></div>
 		</div>
+		<jsp:useBean id="rowMap" class="java.util.HashMap" />
 		<div class="box-body">
 			<form id="book_form" method="post">
 				<c:set var="startTime" value="0800" />
@@ -34,14 +36,16 @@
 				<input type="hidden" name="date" id="currentDay"
 					value="${currentDay }" /> <input type="hidden" name="room.roomId"
 					id="room_id" value="" /> <input type="hidden" name="start"
-					id="start_time" value="" />
+					id="start_time" value="" /><input type="hidden" name="bookId"
+					id="book_id" value="" />
 				<table class="table table-hover table-bordered" id="meeting_table">
 					<thead class="">
 						<tr>
 							<th>Time</th>
 							<c:if test="${fn:length(roomList) gt 0}">
 								<c:forEach var="room" items="${roomList }">
-									<th class="success" style="width: ${90/fn:length(roomList)}%">${room.name }</th>
+									<th class="success" style="width: ${90/fn:length(roomList)}%"
+										roomId="${room.roomId }">${room.name }</th>
 								</c:forEach>
 							</c:if>
 						</tr>
@@ -65,10 +69,31 @@
 								<td class="info">${hour_time}</td>
 								<c:if test="${fn:length(roomList) gt 0}">
 									<c:forEach var="room" items="${roomList }">
-										<c:set var="bookMap" value="${roomBookMap[room.roomId] }" />
+										<c:set var="roomId" value="${room.roomId }" />
+										<c:set var="bookMap" value="${roomBookMap[roomId] }" />
+										<c:forEach var="row" items="${rowMap }">
+											<c:choose>
+												<c:when test="${row.key == roomId}">
+													<c:set var="rowSpan" value="${row.value }" />
+												</c:when>
+												<c:otherwise>
+													<c:set var="rowSpan" value="0" />
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
 										<c:choose>
-											<c:when test="${not empty bookMap && not empty bookMap[hour_time] }">
-												<td>123</td>
+											<c:when test="${rowSpan > 0 }">
+												<c:set target="${rowMap }" property="${roomId }"
+													value="${rowSpan-1 }" />
+											</c:when>
+											<c:when
+												test="${not empty bookMap && not empty bookMap[hour_time] }">
+												<c:set var="book" value="${bookMap[hour_time] }" />
+												<c:set target="${rowMap }" property="${roomId}"
+													value="${book.minutes/30-1 }" />
+												<td type="book" bookid="${book.bookId }" class="booking"
+													room="${roomId}" rowspan="${book.minutes/30 }">${book.name}
+												</td>
 											</c:when>
 											<c:otherwise>
 												<td type="free" room="${room.roomId }">&nbsp;</td>
