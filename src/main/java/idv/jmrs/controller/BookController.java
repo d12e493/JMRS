@@ -32,17 +32,31 @@ public class BookController extends BaseController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView save(Book book) {
-		ModelAndView modelAndView = new ModelAndView("redirect:");
+		ModelAndView modelAndView = new ModelAndView("redirect:/");
 
 		if (!validateBooking(book)) {
 			return add(book);
 		}
 		book.setUser(new User(1));
+
+		countMinuteAndHour(book);
+
 		bookService.save(book);
 
 		modelAndView.addObject("currentDay", smt.format(book.getBookDate()));
 
 		return modelAndView;
+	}
+
+	private void countMinuteAndHour(Book book) {
+		if (book.getStartTime() != null && book.getEndTime() != null) {
+			long duration = book.getEndTime().getTime() - book.getStartTime().getTime();
+			int minutes = (int) (duration / 1000 / 60);
+			double hours = (double) minutes / 60;
+
+			book.setMinutes(minutes);
+			book.setHours(hours);
+		}
 	}
 
 	private boolean validateBooking(Book book) {

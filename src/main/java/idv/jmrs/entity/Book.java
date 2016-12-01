@@ -36,6 +36,8 @@ public class Book implements java.io.Serializable {
 	private Time endTime;
 	private String name;
 	private String comment;
+	private int minutes;
+	private double hours;
 
 	public Book() {
 	}
@@ -77,21 +79,28 @@ public class Book implements java.io.Serializable {
 		return this.startTime;
 	}
 
-	public void setStartTime(String startTime) throws ParseException {
+	public void setStart(String startTime) throws ParseException {
 		if (startTime != null) {
 			SimpleDateFormat smt = new SimpleDateFormat("HH:mm");
 			Date date = smt.parse(startTime);
 			this.startTime = new Time(date.getTime());
-			System.out.println(this.startTime);
 		}
 	}
 
+	public void setStartTime(Time time){
+		this.startTime = time;
+	}
+	
 	@Column(name = "end_time", nullable = false, length = 19)
 	public Time getEndTime() {
 		return this.endTime;
 	}
 
-	public void setEndTime(String endTime) throws ParseException {
+	public void setEndTime(Time time){
+		this.endTime = time;
+	}
+	
+	public void setEnd(String endTime) throws ParseException {
 		if (endTime != null) {
 			SimpleDateFormat smt = new SimpleDateFormat("HH:mm");
 			Date date = smt.parse(endTime);
@@ -121,7 +130,7 @@ public class Book implements java.io.Serializable {
 		return bookDate;
 	}
 
-	public void setBookDate(String bookDate) throws ParseException {
+	public void setDate(String bookDate) throws ParseException {
 		if (bookDate != null) {
 			SimpleDateFormat smt = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = smt.parse(bookDate);
@@ -129,4 +138,25 @@ public class Book implements java.io.Serializable {
 		}
 	}
 
+	public void setBookDate(Date date) {
+		this.bookDate = date;
+	}
+
+	@Column(name = "minutes")
+	public int getMinutes() {
+		return minutes;
+	}
+
+	public void setMinutes(int minutes) {
+		this.minutes = minutes;
+	}
+
+	@Column(name = "hours")
+	public double getHours() {
+		return hours;
+	}
+
+	public void setHours(double hours) {
+		this.hours = hours;
+	}
 }

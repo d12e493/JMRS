@@ -10,7 +10,7 @@
 	media="print">
 <link rel="stylesheet" href="<c:url value="/css/dashboard.css"/>">
 <script type="text/javascript">
-	var booking_add_url='<c:url value="/book/add"/>';
+	var booking_add_url = '<c:url value="/book/add"/>';
 </script>
 <section class="content">
 	<div class="box box-default">
@@ -31,9 +31,9 @@
 			<form id="book_form" method="post">
 				<c:set var="startTime" value="0800" />
 				<c:set var="endTime" value="1900" />
-				<input type="hidden" name="bookDate" id="currentDay"
+				<input type="hidden" name="date" id="currentDay"
 					value="${currentDay }" /> <input type="hidden" name="room.roomId"
-					id="room_id" value="" /> <input type="hidden" name="startTime"
+					id="room_id" value="" /> <input type="hidden" name="start"
 					id="start_time" value="" />
 				<table class="table table-hover table-bordered" id="meeting_table">
 					<thead class="">
@@ -65,7 +65,15 @@
 								<td class="info">${hour_time}</td>
 								<c:if test="${fn:length(roomList) gt 0}">
 									<c:forEach var="room" items="${roomList }">
-										<td type="free" room="${room.roomId }">&nbsp;</td>
+										<c:set var="bookMap" value="${roomBookMap[room.roomId] }" />
+										<c:choose>
+											<c:when test="${not empty bookMap && not empty bookMap[hour_time] }">
+												<td>123</td>
+											</c:when>
+											<c:otherwise>
+												<td type="free" room="${room.roomId }">&nbsp;</td>
+											</c:otherwise>
+										</c:choose>
 									</c:forEach>
 								</c:if>
 							</tr>
