@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import idv.jmrs.entity.Book;
@@ -20,6 +21,8 @@ public class BookController extends BaseController {
 	@Autowired
 	private BookService bookService;
 
+	private Book book;
+	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ModelAndView add(Book book) {
 		ModelAndView modelAndView = new ModelAndView("book-addEdit");
@@ -44,6 +47,36 @@ public class BookController extends BaseController {
 		bookService.save(book);
 
 		modelAndView.addObject("currentDay", smt.format(book.getBookDate()));
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public ModelAndView update(Book book) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/");
+
+		if (!validateBooking(book)) {
+			return edit(book.getBookId());
+		}
+		book.setUser(new User(1));
+
+		countMinuteAndHour(book);
+
+		bookService.update(book);
+
+		modelAndView.addObject("currentDay", smt.format(book.getBookDate()));
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
+	public ModelAndView edit(@RequestParam("bookId") Integer bookId) {
+		ModelAndView modelAndView = new ModelAndView("book-addEdit");
+		modelAndView.addObject(ACTION, ACTION_EDIT);
+
+		book = bookService.findOne(Book.class, bookId);
+
+		modelAndView.addObject("book", book);
 
 		return modelAndView;
 	}

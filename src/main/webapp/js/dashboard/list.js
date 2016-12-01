@@ -20,7 +20,6 @@ $(function() {
 	});
 
 	$("#meeting_table tbody tr td").not(":first-child").click(function() {
-		console.log($(this).attr('type'));
 		// add
 		if ($(this).attr('type') == 'free') {
 			var time = $(this).closest('tr').attr('time');
@@ -32,7 +31,7 @@ $(function() {
 			$('#book_form').attr('action', booking_add_url).submit();
 		}
 		// edit
-		else if ($(this).attr('type') == 'booking') {
+		else if ($(this).attr('type') == 'book') {
 			$('#book_id').val($(this).attr('bookid'));
 			$('#book_form').attr('action', booking_edit_url).submit();
 		}
