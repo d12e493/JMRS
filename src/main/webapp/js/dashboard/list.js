@@ -5,9 +5,11 @@ $(function() {
 	$('#datepicker').datepicker({
 		autoclose : true,
 		format : 'yyyy-mm-dd',
-	}).datepicker("setDate", "0");
-
-	$("#dateDivPicker").datepicker();
+	}).datepicker("setDate", $('#currentDay').val()).on('changeDate',
+			function(e) {
+				$('#currentDay').val($(this).val());
+				$('#book_form').attr('action', root_url).submit();
+			});
 
 	$('#meeting_table tbody tr td').not(":first-child").hover(function() {
 		var th = getThByTd($(this));

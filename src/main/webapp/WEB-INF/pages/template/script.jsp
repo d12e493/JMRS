@@ -17,3 +17,6 @@
 <script src="<c:url value="/dist/js/app.min.js"/>"></script>
 <script src="<c:url value="/plugins/timepicker/bootstrap-timepicker.min.js"/>"></script>
 <script src="<c:url value="/plugins/iCheck/icheck.min.js"/>"></script>
+
+<!-- notifly -->
+<script src="<c:url value="/js/bootstrap-notify.min.js"/>"></script>

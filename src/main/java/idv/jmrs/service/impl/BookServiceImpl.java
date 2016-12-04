@@ -24,7 +24,7 @@ public class BookServiceImpl extends BaseServiceImpl implements BookService {
 	public List<Book> getBooks(String date) {
 		Date d = new Date();
 		try {
-			d = DateUtils.smt.parse(date);
+			d = DateUtils.DATE_FORMAT.parse(date);
 		} catch (ParseException e) {
 
 			e.printStackTrace();

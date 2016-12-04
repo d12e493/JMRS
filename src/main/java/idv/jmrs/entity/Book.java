@@ -159,4 +159,11 @@ public class Book implements java.io.Serializable {
 	public void setHours(double hours) {
 		this.hours = hours;
 	}
+
+	@Override
+	public String toString() {
+		return "Book [bookId=" + bookId + ", room=" + room + ", user=" + user + ", bookDate=" + bookDate
+				+ ", startTime=" + startTime + ", endTime=" + endTime + ", name=" + name + ", comment=" + comment
+				+ ", minutes=" + minutes + ", hours=" + hours + "]";
+	}
 }
