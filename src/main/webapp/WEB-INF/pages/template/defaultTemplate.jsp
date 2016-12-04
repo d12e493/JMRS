@@ -11,6 +11,7 @@
 	name="viewport">
 <tiles:insertAttribute name="css" />
 <tiles:insertAttribute name="script" />
+<tiles:insertAttribute name="message" />
 <title><tiles:insertAttribute name="title" /></title>
 </head>
 <body class="hold-transition skin-blue-light sidebar-mini">

@@ -10,6 +10,7 @@
 		<put-attribute name="css" value="/WEB-INF/pages/template/css.jsp" />
 		<put-attribute name="script" value="/WEB-INF/pages/template/script.jsp" />
 		<put-attribute name="header" value="/WEB-INF/pages/template/header.jsp" />
+		<put-attribute name="message" value="/WEB-INF/pages/template/message.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/pages/template/footer.jsp" />
 	</definition>

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="<c:url value="/bootstrap/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/animate.css"/>">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="<c:url value="/font-awesome/css/font-awesome.min.css"/>">
 <!-- Ionicons -->

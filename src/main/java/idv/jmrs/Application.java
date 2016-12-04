@@ -13,6 +13,9 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 @SpringBootApplication
 @PropertySource({"classpath:application.properties"})
 public class Application {
+	
+	public static final Locale locale = Locale.TAIWAN;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 		
@@ -21,7 +24,7 @@ public class Application {
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();
-		slr.setDefaultLocale(Locale.TAIWAN);
+		slr.setDefaultLocale(locale);
 		return slr;
 	}
 
