@@ -15,7 +15,8 @@
 		<put-attribute name="footer" value="/WEB-INF/pages/template/footer.jsp" />
 	</definition>
 
-	<definition name="login" template="/WEB-INF/pages/login/login.jsp">
+	<definition name="login" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/pages/login.jsp" />
 	</definition>
 
 	<definition name="dashboard" extends="defaultTemplate">
