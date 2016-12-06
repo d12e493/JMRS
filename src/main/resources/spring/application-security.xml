@@ -13,7 +13,7 @@
 		<csrf disabled="true" />
 		<intercept-url pattern="/user" access="hasRole('USER')" />
 		<intercept-url pattern="/admin" access="hasRole('ADMIN')" />
-		<form-login login-page="/login" username-parameter="email"
+		<form-login login-page="/login" username-parameter="name"
 			password-parameter="password" authentication-failure-url="/Access_Denied" />
 		<csrf />
 	</http>
