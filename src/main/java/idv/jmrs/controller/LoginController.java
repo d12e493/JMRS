@@ -54,11 +54,6 @@ public class LoginController extends BaseController {
 
 	private List<Book> bookList = new ArrayList<Book>();
 
-	/**
-	 * Map<room id , TreeMap < startTime , Book >>
-	 */
-	private Map<Integer, TreeMap<String, Book>> roomBookMap = new HashMap<Integer, TreeMap<String, Book>>();
-
 	@RequestMapping(value = { "/", "welcome" })
 	public ModelAndView dashboard(ModelMap model, @RequestParam(name = "date", required = false) String date,
 			HttpServletRequest request) {
