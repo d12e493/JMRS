@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import idv.jmrs.enums.Role;
 
-@Component
+@Component("userInfo")
 @Scope(value = "session",  proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserInfo {
 	private String name;

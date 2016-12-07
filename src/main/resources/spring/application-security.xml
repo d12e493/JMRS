@@ -11,13 +11,15 @@
 
 	<http auto-config="true" use-expressions="true">
 		<csrf disabled="true" />
-		<intercept-url pattern="/user" access="hasRole('USER')" />
-		<intercept-url pattern="/admin" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/user/**" access="hasAuthority('ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')" />
+		<intercept-url pattern="/book/**" access="hasAnyAuthority('USER','ADMIN')" />
 		<form-login login-page="/login" username-parameter="name"
 			password-parameter="password" authentication-failure-url="/login" />
 		<csrf />
 		<logout logout-success-url="/" logout-url="/logout"
 			delete-cookies="JSESSIONID" />
+		<access-denied-handler error-page="/" />
 	</http>
 
 	<authentication-manager>

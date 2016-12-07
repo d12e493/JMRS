@@ -83,5 +83,5 @@
 		</div>
 	</div>
 </section>
-<script src="<c:url value="/js/moment.min.js"/>"></script>
+<script src="<c:url value="/plugins/daterangepicker/moment.min.js"/>"></script>
 <script src="<c:url value="/js/dashboard/list.js"/>"></script>

@@ -48,9 +48,10 @@ public class CustomAuthenticationProvider extends BaseController implements Auth
 			addMessage("ERR_LOGIN");
 			throw new UsernameNotFoundException("email / password is empty !!! ");
 		}
+		String roleName = role.name();
 
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new SimpleGrantedAuthority(role.name()));
+		grantedAuthorities.add(new SimpleGrantedAuthority(roleName));
 
 		userInfo.setName(name);
 		userInfo.setRole(role);

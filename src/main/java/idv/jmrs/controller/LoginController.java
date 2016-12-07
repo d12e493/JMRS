@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,10 +25,8 @@ import idv.jmrs.entity.Room;
 import idv.jmrs.service.BookService;
 import idv.jmrs.service.RoomService;
 import idv.jmrs.utils.DateUtils;
-import idv.jmrs.utils.ValidationUtils;
 import idv.jmrs.vo.Booking;
 import idv.jmrs.vo.Booking.BookType;
-import idv.jmrs.vo.RoomBooking;
 
 /**
  * @author Davis Chen
