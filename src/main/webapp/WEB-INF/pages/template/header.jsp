@@ -6,11 +6,9 @@
 	uri="http://www.springframework.org/security/tags"%>
 <header class="main-header">
 	<!-- Logo -->
-	<a href="<c:url value="/"/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-		<span class="logo-mini"><b>Java</b>MRS</span> <!-- logo for regular state and mobile devices -->
+	<a href="<c:url value="/"/>" class="logo">
 		<span class="logo-lg"><b>Java</b>MRS</span>
 	</a>
-	<!-- Header Navbar: style can be found in header.less -->
 	<nav class="navbar navbar-static-top">
 		<ul class="nav navbar-nav" id="nav">
 			<li><a href="<c:url value="/room/list"/>"><i
@@ -44,7 +42,7 @@
 				<sec:authorize access="isAuthenticated()">
 					<li><a href="#" data-toggle="control-sidebar"><i
 							class="fa fa-fw fa-th-large"></i></a></li>
-					<li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+					<li><a href="<c:url value="/logout" />">Logout</a></li>
 				</sec:authorize>
 			</ul>
 		</div>

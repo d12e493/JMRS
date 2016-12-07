@@ -14,8 +14,10 @@
 		<intercept-url pattern="/user" access="hasRole('USER')" />
 		<intercept-url pattern="/admin" access="hasRole('ADMIN')" />
 		<form-login login-page="/login" username-parameter="name"
-			password-parameter="password" authentication-failure-url="/Access_Denied" />
+			password-parameter="password" authentication-failure-url="/login" />
 		<csrf />
+		<logout logout-success-url="/" logout-url="/logout"
+			delete-cookies="JSESSIONID" />
 	</http>
 
 	<authentication-manager>
