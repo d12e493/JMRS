@@ -84,6 +84,14 @@ public class LoginController extends BaseController {
 		return "login";
 	}
 
+	@RequestMapping("/help")
+	public String help(ModelMap model) {
+
+		LOG.debug("help page");
+
+		return "dashboard-help";
+	}
+	
 	private Map<Integer, Map<String, Book>> getRoomMap(List<Room> roomList, List<Book> bookList) {
 		Map<Integer, Map<String, Book>> roomMap = new HashMap<Integer, Map<String, Book>>();
 
